@@ -2,7 +2,7 @@
 # docker build -t hello-world .
 #
 # # Run container
-# docker run --rm -p 3000:3333 hello-world
+# docker run --rm --name hello-world -d -p 3000:3333 hello-world
 # docker logs -f hello-world
 FROM golang:1.10.0-stretch
 
@@ -11,7 +11,7 @@ WORKDIR /go/src/github.com/pratz/tel-hello-world
 COPY . .
 
 # Run unit tests
-RUN go test -v
+RUN go test
 
 # Build binary
 RUN go build
